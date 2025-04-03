@@ -19,203 +19,30 @@ namespace Functions
     }
   }
 
-  float max(float a, float b,float c)
-  {
-    return max(a,max(b,c));
-  }
-  float max(float a,float b,float c,float d)
-  {
-    return max(a, max(b,c,d));
-  }
-  float max(float a,float b,float c,float d, float e)
-  {
-    return max(a, max(b,c,d,e));
-  }
-  float max(float a,float b,float c,float d, float e, float f)
-  {
-    return max(a, max(b,c,d,e,f));
-  }
-  float max(float a,float b,float c,float d, float e, float f, float g)
-  {
-    return max(a, max(b,c,d,e,f,g));
-  }
-  float max(float a,float b,float c,float d, float e, float f, float g, float h)
-  {
-    return max(a, max(b,c,d,e,f,g,h));
-  }
-  float max(float a,float b,float c,float d, float e, float f, float g, float h, float i)
-  {
-    return max(a, max(b,c,d,e,f,g,h,i));
-  }
+  #define GEN_OVERLOADS_UP_TO_16_PARAMS(type, func_name) \
+    GEN_FUNC_3_PARAMS(type, func_name) \
+    GEN_FUNC_4_PARAMS(type, func_name) \
+    GEN_FUNC_5_PARAMS(type, func_name) \
+    GEN_FUNC_6_PARAMS(type, func_name) \
+    GEN_FUNC_7_PARAMS(type, func_name) \
+    GEN_FUNC_8_PARAMS(type, func_name) \
+    GEN_FUNC_9_PARAMS(type, func_name) \
+    GEN_FUNC_10_PARAMS(type, func_name) \
+    GEN_FUNC_11_PARAMS(type, func_name) \
+    GEN_FUNC_12_PARAMS(type, func_name) \
+    GEN_FUNC_13_PARAMS(type, func_name) \
+    GEN_FUNC_14_PARAMS(type, func_name) \
+    GEN_FUNC_15_PARAMS(type, func_name) \
+    GEN_FUNC_16_PARAMS(type, func_name)
 
-  float2 max(float2 a, float2 b,float2 c)
-  {
-    return max(a,max(b,c));
-  }
-  float2 max(float2 a,float2 b,float2 c,float2 d)
-  {
-    return max(a, max(b,c,d));
-  }
-  float2 max(float2 a,float2 b,float2 c,float2 d, float2 e)
-  {
-    return max(a, max(b,c,d,e));
-  }
-  float2 max(float2 a,float2 b,float2 c,float2 d, float2 e, float2 f)
-  {
-    return max(a, max(b,c,d,e,f));
-  }
-  float2 max(float2 a,float2 b,float2 c,float2 d, float2 e, float2 f, float2 g)
-  {
-    return max(a, max(b,c,d,e,f,g));
-  }
-  float2 max(float2 a,float2 b,float2 c,float2 d, float2 e, float2 f, float2 g, float2 h)
-  {
-    return max(a, max(b,c,d,e,f,g,h));
-  }
-  float2 max(float2 a,float2 b,float2 c,float2 d, float2 e, float2 f, float2 g, float2 h, float2 i)
-  {
-    return max(a, max(b,c,d,e,f,g,h,i));
-  }
-
-  float3 max(float3 a, float3 b,float3 c)
-  {
-    return max(a,max(b,c));
-  }
-  float3 max(float3 a,float3 b,float3 c,float3 d)
-  {
-    return max(a, max(b,c,d));
-  }
-  float3 max(float3 a,float3 b,float3 c,float3 d, float3 e)
-  {
-    return max(a, max(b,c,d,e));
-  }
-  float3 max(float3 a,float3 b,float3 c,float3 d, float3 e, float3 f)
-  {
-    return max(a, max(b,c,d,e,f));
-  }
-  float3 max(float3 a,float3 b,float3 c,float3 d, float3 e, float3 f, float3 g)
-  {
-    return max(a, max(b,c,d,e,f,g));
-  }
-  float3 max(float3 a,float3 b,float3 c,float3 d, float3 e, float3 f, float3 g, float3 h)
-  {
-    return max(a, max(b,c,d,e,f,g,h));
-  }
-  float3 max(float3 a,float3 b,float3 c,float3 d, float3 e, float3 f, float3 g, float3 h, float3 i)
-  {
-    return max(a, max(b,c,d,e,f,g,h,i));
-  }
-  float3 max(float3 a,float3 b,float3 c,float3 d, float3 e, float3 f, float3 g, float3 h, float3 i, float3 j)
-  {
-    return max(a, max(b,c,d,e,f,g,h,i,j));
-  }
-  float3 max(float3 a,float3 b,float3 c,float3 d, float3 e, float3 f, float3 g, float3 h, float3 i, float3 j, float3 k)
-  {
-    return max(a, max(b,c,d,e,f,g,h,i,j,k));
-  }
-  float3 max(float3 a,float3 b,float3 c,float3 d, float3 e, float3 f, float3 g, float3 h, float3 i, float3 j, float3 k, float3 l)
-  {
-    return max(a, max(b,c,d,e,f,g,h,i,j,k,l));
-  }
-
-  float min(float a, float b,float c)
-  {
-    return min(a,min(b,c));
-  }
-  float min(float a,float b,float c,float d)
-  {
-    return min(a, min(b,c,d));
-  }
-  float min(float a,float b,float c,float d, float e)
-  {
-    return min(a, min(b,c,d,e));
-  }
-  float min(float a,float b,float c,float d, float e, float f)
-  {
-    return min(a, min(b,c,d,e,f));
-  }
-  float min(float a,float b,float c,float d, float e, float f, float g)
-  {
-    return min(a, min(b,c,d,e,f,g));
-  }
-  float min(float a,float b,float c,float d, float e, float f, float g, float h)
-  {
-    return min(a, min(b,c,d,e,f,g,h));
-  }
-  float min(float a,float b,float c,float d, float e, float f, float g, float h, float i)
-  {
-    return min(a, min(b,c,d,e,f,g,h,i));
-  }
-
-  float2 min(float2 a, float2 b,float2 c)
-  {
-    return min(a,min(b,c));
-  }
-  float2 min(float2 a,float2 b,float2 c,float2 d)
-  {
-    return min(a, min(b,c,d));
-  }
-  float2 min(float2 a,float2 b,float2 c,float2 d, float2 e)
-  {
-    return min(a, min(b,c,d,e));
-  }
-  float2 min(float2 a,float2 b,float2 c,float2 d, float2 e, float2 f)
-  {
-    return min(a, min(b,c,d,e,f));
-  }
-  float2 min(float2 a,float2 b,float2 c,float2 d, float2 e, float2 f, float2 g)
-  {
-    return min(a, min(b,c,d,e,f,g));
-  }
-  float2 min(float2 a,float2 b,float2 c,float2 d, float2 e, float2 f, float2 g, float2 h)
-  {
-    return min(a, min(b,c,d,e,f,g,h));
-  }
-  float2 min(float2 a,float2 b,float2 c,float2 d, float2 e, float2 f, float2 g, float2 h, float2 i)
-  {
-    return min(a, min(b,c,d,e,f,g,h,i));
-  }
-
-  float3 min(float3 a, float3 b,float3 c)
-  {
-    return min(a,min(b,c));
-  }
-  float3 min(float3 a,float3 b,float3 c,float3 d)
-  {
-    return min(a, min(b,c,d));
-  }
-  float3 min(float3 a,float3 b,float3 c,float3 d, float3 e)
-  {
-    return min(a, min(b,c,d,e));
-  }
-  float3 min(float3 a,float3 b,float3 c,float3 d, float3 e, float3 f)
-  {
-    return min(a, min(b,c,d,e,f));
-  }
-  float3 min(float3 a,float3 b,float3 c,float3 d, float3 e, float3 f, float3 g)
-  {
-    return min(a, min(b,c,d,e,f,g));
-  }
-  float3 min(float3 a,float3 b,float3 c,float3 d, float3 e, float3 f, float3 g, float3 h)
-  {
-    return min(a, min(b,c,d,e,f,g,h));
-  }
-  float3 min(float3 a,float3 b,float3 c,float3 d, float3 e, float3 f, float3 g, float3 h, float3 i)
-  {
-    return min(a, min(b,c,d,e,f,g,h,i));
-  }
-  float3 min(float3 a,float3 b,float3 c,float3 d, float3 e, float3 f, float3 g, float3 h, float3 i, float3 j)
-  {
-    return min(a, min(b,c,d,e,f,g,h,i,j));
-  }
-  float3 min(float3 a,float3 b,float3 c,float3 d, float3 e, float3 f, float3 g, float3 h, float3 i, float3 j, float3 k)
-  {
-    return min(a, min(b,c,d,e,f,g,h,i,j,k));
-  }
-  float3 min(float3 a,float3 b,float3 c,float3 d, float3 e, float3 f, float3 g, float3 h, float3 i, float3 j, float3 k, float3 l)
-  {
-    return min(a, min(b,c,d,e,f,g,h,i,j,k,l));
-  }
+  GEN_OVERLOADS_UP_TO_16_PARAMS(float, max)
+  GEN_OVERLOADS_UP_TO_16_PARAMS(float2, max)
+  GEN_OVERLOADS_UP_TO_16_PARAMS(float3, max)
+  GEN_OVERLOADS_UP_TO_16_PARAMS(float4, max)
+  GEN_OVERLOADS_UP_TO_16_PARAMS(float, min)
+  GEN_OVERLOADS_UP_TO_16_PARAMS(float2, min)
+  GEN_OVERLOADS_UP_TO_16_PARAMS(float3, min)
+  GEN_OVERLOADS_UP_TO_16_PARAMS(float4, min)
 
   float max(float2 rg)
   {
@@ -272,19 +99,6 @@ namespace Functions
   float avg(float x, float y, float z, float w)
   {
     return avg(float4(x,y,z,w));
-  }
-
-  bool any(float2 vec)
-  {
-    return sum(vec) > 0.0;
-  }
-  bool any(float3 vec)
-  {
-    return sum(vec) > 0.0;
-  }
-  bool any(float4 vec)
-  {
-    return sum(vec) > 0.0;
   }
 
   /**
