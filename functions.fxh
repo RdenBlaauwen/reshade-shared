@@ -117,6 +117,23 @@ namespace Functions
   {
     return max(a, max(b,c,d,e,f,g,h,i,j,k,l));
   }
+  float3 max(float3 a,float3 b,float3 c,float3 d, float3 e, float3 f, float3 g, float3 h, float3 i, float3 j, float3 k, float3 l, float3 m)
+  {
+    return max(a, max(b,c,d,e,f,g,h,i,j,k,l,m));
+  }
+  float3 max(float3 a,float3 b,float3 c,float3 d, float3 e, float3 f, float3 g, float3 h, float3 i, float3 j, float3 k, float3 l, float3 m, float3 n)
+  {
+    return max(a, max(b,c,d,e,f,g,h,i,j,k,l,m,n));
+  }
+  float3 max(float3 a,float3 b,float3 c,float3 d, float3 e, float3 f, float3 g, float3 h, float3 i, float3 j, float3 k, float3 l, float3 m, float3 n, float3 o)
+  {
+    return max(a, max(b,c,d,e,f,g,h,i,j,k,l,m,n,o));
+  }
+  float3 max(float3 a,float3 b,float3 c,float3 d, float3 e, float3 f, float3 g, float3 h, float3 i, float3 j, float3 k, float3 l, float3 m, float3 n, float3 o, float3 p)
+  {
+    return max(a, max(b,c,d,e,f,g,h,i,j,k,l,m,n,o,p));
+  }
+
 
   float min(float a, float b,float c)
   {
