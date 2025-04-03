@@ -54,7 +54,7 @@ namespace Functions
   }
   float max(float4 rgba)
   {
-    return max(max(rgba.rgb), rgba.a);
+    return max(max(rgba.rg), max(rgba.ba));
   }
   
   float min(float2 rg)
@@ -67,20 +67,20 @@ namespace Functions
   }
   float min(float4 rgba)
   {
-    return min(min(rgba.rgb), rgba.a);
+    return min(min(rgba.rg), min(rgba.ba));
   }
 
   float sum(float2 vec)
   {
-    return Shared::dotArithmetic(vec, 1.0);
+    return Shared::dotArithmetic(vec, 1f);
   }
   float sum(float3 vec)
   {
-    return Shared::dotArithmetic(vec, 1.0);
+    return Shared::dotArithmetic(vec, 1f);
   }
   float sum(float4 vec)
   {
-    return Shared::dotArithmetic(vec, 1.0);
+    return Shared::dotArithmetic(vec, 1f);
   }
 
   float avg(float2 vec)
@@ -89,7 +89,7 @@ namespace Functions
   }
   float avg(float3 vec)
   {
-    const float mod = 1.0 / 3.0;
+    const float mod = 1f / 3f;
     return Shared::dotArithmetic(vec, mod);
   }
   float avg(float4 vec)
