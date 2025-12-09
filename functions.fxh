@@ -1,5 +1,5 @@
 #pragma once
-
+#include "macros.fxh"
 /**
 * Commonly used convenience functions.
 */
