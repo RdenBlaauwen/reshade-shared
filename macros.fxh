@@ -1,3 +1,5 @@
+#pragma once
+
 // Base recursive macro helpers
 #define CONCAT_(a, b) a ## b
 #define CONCAT(a, b) CONCAT_(a, b)

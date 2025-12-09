@@ -1,7 +1,9 @@
+#pragma once
+
 // Place these preprocessor vars in file
 // #define SHARED_DEBUG__ACTIVE_ 1
 
-#define SHARED_DEBUG__NEAR_ZERO 0.0001f
+#define SHARED_DEBUG__NEAR_ZERO 0.0001f // TODO: consider moving this into the #if SHARED_DEBUG__ACTIVE_ block
 #define SHARED_DEBUG__BRANCH [branch]
 
 #if SHARED_DEBUG__ACTIVE_ == 1

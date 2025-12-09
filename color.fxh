@@ -1,3 +1,8 @@
+#pragma once
+
+// #ifndef COLOR_FXH TODO: test this!
+// #define COLOR_FXH
+
 namespace Color
 {
   // TODO: try changing into pre-processor val
@@ -9,3 +14,5 @@ namespace Color
     return dot(rgb, LUMA_WEIGHTS);
   }
 }
+
+// #endif // COLOR_FXH

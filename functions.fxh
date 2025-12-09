@@ -1,3 +1,5 @@
+#pragma once
+
 /**
 * Commonly used convenience functions.
 */
