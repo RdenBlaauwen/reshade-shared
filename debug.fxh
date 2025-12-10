@@ -1,4 +1,7 @@
-#pragma once
+#ifndef DEBUG_FXH
+#define DEBUG_FXH
+
+#include "functions.fxh"
 
 // Place these preprocessor vars in file
 // #define SHARED_DEBUG__ACTIVE_ 1
@@ -211,3 +214,5 @@ namespace Debug
   }
 }
 #endif
+
+#endif // DEBUG_FXH include guard

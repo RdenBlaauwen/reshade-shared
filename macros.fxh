@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MACROS_FXH
+#define MACROS_FXH
 
 // Base recursive macro helpers
 #define CONCAT_(a, b) a ## b
@@ -143,3 +144,4 @@
   { \
     return func_name(func_name(VAR_DEF(1), VAR_DEF(2), VAR_DEF(3), VAR_DEF(4), VAR_DEF(5), VAR_DEF(6), VAR_DEF(7), VAR_DEF(8)), func_name(VAR_DEF(9), VAR_DEF(10), VAR_DEF(11), VAR_DEF(12), VAR_DEF(13), VAR_DEF(14), VAR_DEF(15), VAR_DEF(16))); \
   }
+#endif // MACROS_FXH include guard

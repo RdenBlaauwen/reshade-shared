@@ -1,4 +1,6 @@
-#pragma once
+#ifndef RESHADE_SHARED_FUNCTIONS_FHX
+#define RESHADE_SHARED_FUNCTIONS_FHX
+
 #include "macros.fxh"
 /**
 * Commonly used convenience functions.
@@ -125,3 +127,4 @@ namespace Functions
   }
 
 }
+#endif // RESHADE_SHARED_FUNCTIONS_FHX include guard

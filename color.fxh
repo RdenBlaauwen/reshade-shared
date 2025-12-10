@@ -1,7 +1,6 @@
-#pragma once
 
-// #ifndef COLOR_FXH TODO: test this!
-// #define COLOR_FXH
+#ifndef COLOR_FXH
+#define COLOR_FXH
 
 namespace Color
 {
@@ -15,4 +14,4 @@ namespace Color
   }
 }
 
-// #endif // COLOR_FXH
+#endif // COLOR_FXH include guard
