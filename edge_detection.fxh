@@ -63,7 +63,7 @@ namespace EdgeDetection {
 
       float3 Cbottom = EdgeDetectionSamplePoint(colorTex, offset[1].zw).rgb;
       t = abs(C - Cbottom);
-      float rangeBottom = Functions::max(Cright) - Functions::min(Cright);
+      float rangeBottom = Functions::max(Cbottom) - Functions::min(Cbottom);
       colorfulness = max(midRange, rangeBottom);
       delta.w = (colorfulness * Functions::max(t)) + ((1.0 - colorfulness) * Color::luma(t));
 
@@ -73,13 +73,13 @@ namespace EdgeDetection {
       // Calculate left-left and top-top deltas:
       float3 Cleftleft = EdgeDetectionSamplePoint(colorTex, offset[2].xy).rgb;
       t = abs(Cleft - Cleftleft);
-      float rangeLeftLeft = Functions::max(Cright) - Functions::min(Cright);
+      float rangeLeftLeft = Functions::max(Cleftleft) - Functions::min(Cleftleft);
       colorfulness = max(rangeLeft, rangeLeftLeft);
       delta.z = (colorfulness * Functions::max(t)) + ((1.0 - colorfulness) * Color::luma(t));
 
       float3 Ctoptop = EdgeDetectionSamplePoint(colorTex, offset[2].zw).rgb;
       t = abs(Ctop - Ctoptop);
-      float rangeTopTop = Functions::max(Cright) - Functions::min(Cright);
+      float rangeTopTop = Functions::max(Ctoptop) - Functions::min(Ctoptop);
       colorfulness = max(rangeTop, rangeTopTop);
       delta.w = (colorfulness * Functions::max(t)) + ((1.0 - colorfulness) * Color::luma(t));
 
