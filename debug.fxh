@@ -1,5 +1,5 @@
-#ifndef DEBUG_FXH
-#define DEBUG_FXH
+#ifndef _DEBUG_FXH
+#define _DEBUG_FXH
 
 #include "functions.fxh"
 

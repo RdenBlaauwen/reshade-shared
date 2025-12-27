@@ -1,5 +1,5 @@
-#ifndef MACROS_FXH
-#define MACROS_FXH
+#ifndef _MACROS_FXH
+#define _MACROS_FXH
 
 // Base recursive macro helpers
 #define CONCAT_(a, b) a ## b

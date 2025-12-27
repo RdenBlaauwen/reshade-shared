@@ -1,6 +1,6 @@
 
-#ifndef COLOR_FXH
-#define COLOR_FXH
+#ifndef _COLOR_FXH
+#define _COLOR_FXH
 
 namespace Color
 {
