@@ -2,6 +2,36 @@
 #define _BEAN_SMOOTHING_FHX
 /////////////////////////////////// CREDITS ///////////////////////////////////
 // Do not distribute without giving credit to the original author(s).
+/**
+ * This shader contains components taken and/or adapted from Lordbean's TSMAA.
+ * https://github.com/lordbean-git/reshade-shaders/blob/main/Shaders/TSMAA.fx
+ *
+ * The 'smooth()' function in this module is a modified version of FXAA, and is 
+ * copyrighted to NVIDIA as specified in the FXAA 3.11 license below.
+ * All code specified as originating from SMAA is copyrighted to the SMAA authors
+ * as specified in the SMAA license below.
+ * All other code is copyright (c) "Lordbean" Derek Brush (derekbrush@gmail.com),
+ * unless otherwise specified.
+ */
+/*============================================================================
+
+
+                    NVIDIA FXAA 3.11 by TIMOTHY LOTTES
+
+
+------------------------------------------------------------------------------
+COPYRIGHT (C) 2010, 2011 NVIDIA CORPORATION. ALL RIGHTS RESERVED.
+------------------------------------------------------------------------------
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THIS SOFTWARE IS PROVIDED
+*AS IS* AND NVIDIA AND ITS SUPPLIERS DISCLAIM ALL WARRANTIES, EITHER EXPRESS
+OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL NVIDIA
+OR ITS SUPPLIERS BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR
+CONSEQUENTIAL DAMAGES WHATSOEVER (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR
+LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION,
+OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE
+THIS SOFTWARE, EVEN IF NVIDIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
+DAMAGES.*/
 /*               TSMAA for ReShade 3.1.1+
  *
  *    (Temporal Subpixel Morphological Anti-Aliasing)
@@ -11,12 +41,6 @@
  *
  *                     by lordbean
  *
- */
-/**
- * This shader contains components taken and/or adapted from Lordbean's TSMAA.
- * https://github.com/lordbean-git/reshade-shaders/blob/main/Shaders/TSMAA.fx
- *
- * All code attributed to "Lordbean" is copyright (c) Derek Brush (derekbrush@gmail.com)
  */
 /*------------------------------------------------------------------------------
  * THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -132,6 +156,8 @@ namespace BeanSmoothing
   // Function which takes a depth value and produces a curve which is 0f until the depth equals a set start value, 
   // then grows until it reaches a set maximum value at depth == 1f. Finally adds the result to 1f to produce a value which
   // can be multiplied with thresholds to grow them based on depth.
+  //
+  // This code is written by RdenBlaauwen and is fully FOSS, not copyrighted.
   float calcDepthGrowthFactor(float depth)
   {
     float flooredCurve = max(depth - SMOOTHING_THRESHOLD_DEPTH_GROWTH_START, 0f);
