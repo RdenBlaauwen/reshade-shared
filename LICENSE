@@ -19,3 +19,14 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+THIRD-PARTY SOFTWARE LICENSES
+This repository contains third-party code that is subject to its own respective permissive licenses. The overarching MIT license above applies only to original code written by Robert den Blaauwen, which is all code not contained in
+the "vendor" directory.
+
+  - SMAA: Copyright (C) 2013 Jorge Jimenez et al. (MIT License)
+  - FidelityFX CAS: Copyright (c) 2017-2019 Advanced Micro Devices, Inc. (MIT License)
+  - FXAA 3.11: Copyright (c) 2010, 2011 NVIDIA Corporation (3-Clause BSD / Public Domain)
+  - TSMAA: by lordbean (Derivative of FXAA)
+
+Full license texts and copyright notices for these works can be found in the headers of their respective files in the directory named "vendor". 

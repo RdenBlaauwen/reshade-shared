@@ -23,6 +23,8 @@
 // COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //==============================================================================================================================
+//
+// Modified by Robert den Blaauwen (aka RdenBlaauwen) on 2025 to port from HLSL to the ReShade graphics language.
 
 // MACROS
 // The following preprocessor variables should be defined in the main file.

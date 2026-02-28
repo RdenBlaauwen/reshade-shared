@@ -1,17 +1,21 @@
 #ifndef _BEAN_SMOOTHING_FHX  // include guard
 #define _BEAN_SMOOTHING_FHX
-/////////////////////////////////// CREDITS ///////////////////////////////////
-// Do not distribute without giving credit to the original author(s).
+/////////////////////////////////// CREDITS & LICENSES ///////////////////////////////////
 /**
  * This shader contains components taken and/or adapted from Lordbean's TSMAA.
  * https://github.com/lordbean-git/reshade-shaders/blob/main/Shaders/TSMAA.fx
  *
- * The 'smooth()' function in this module is a modified version of FXAA, and is 
- * copyrighted to NVIDIA as specified in the FXAA 3.11 license below.
- * All code specified as originating from SMAA is copyrighted to the SMAA authors
- * as specified in the SMAA license below.
- * All other code is copyright (c) "Lordbean" Derek Brush (derekbrush@gmail.com),
- * unless otherwise specified.
+ * The 'smooth()' function in this module is a modified version of FXAA 3.11,
+ * Copyright (c) 2010, 2011 NVIDIA Corporation.
+ * 
+ * Code originating from SMAA is Copyright (c) 2013 Jorge Jimenez et al.
+ * 
+ * TSMAA code is Copyright (c) "Lordbean" Derek Brush (derekbrush@gmail.com).
+ * 
+ * Modifications and all other original code are Copyright (c) 2025 RdenBlaauwen.
+ * 
+ * This file is subject to the licenses and disclaimers of its respective components, 
+ * the full texts of which are included below.
  */
 /*============================================================================
 
@@ -51,6 +55,9 @@ DAMAGES.*/
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *-------------------------------------------------------------------------------*/
+/*
+ * Modified by Robert den Blaauwen (aka RdenBlaauwen).
+*/
 /**
  *                  _______  ___  ___       ___           ___
  *                 /       ||   \/   |     /   \         /   \
@@ -109,8 +116,8 @@ DAMAGES.*/
 // #define SmoothingGatherLeftDeltas(tex, coord) tex2Dgather(tex, texcoord, 0);
 // #define SmoothingGatherTopDeltas(tex, coord) tex2Dgather(tex, texcoord, 1);
 
-#include "../libraries/color.fxh"
-#include "../libraries/functions.fxh"
+#include "../../libraries/color.fxh"
+#include "../../libraries/functions.fxh"
 
 namespace BeanSmoothing
 {
