@@ -1,26 +1,24 @@
 # reshade-shared
 
-A collection of shared functions and libraries for use in ReShade projects. This repository contains reusable code for post-processing effects, including color manipulation, debugging tools, mathematical functions, and specialized algorithms like Anomalous Pixel Blending.
-
-## Introduction
-
 This repository is designed to provide a centralized location for shared code used across multiple ReShade projects. It includes libraries and modules that can be easily integrated into other ReShade shaders to enhance functionality and reduce code duplication.
+
+Questions, bugreports and contributions are welcome and appreciated! Please open an issue or submit a pull request for any improvements or bug fixes.
+
+## Installation
+
+My current approach is to just include the necessary library/module files in any releases of effects which need them for user convenience. That's why I don't recommend downloading these manually, unless you're a dev who wants to use the files in your own project, or if there's something wrong with the provided shared files. In the latter case you can just clone the repo into the folder which contains the effect file (e.g. `SomeRdenBlaauwenEffect.fx`). Make sure that the repo name is `reshade-shared`.
 
 ## Files Overview
 
-**Note:** Most files in this repository use namespaces to organize their functions and variables. When using these files, ensure you access the functions and variables through their respective namespaces (e.g., `Color::luma()`, `Debug::applyDebugOptions()`).
+This repository contains two kinds of files: modules and libraries. **Modules** contain complex functions and techniques. Their purpose is to provide fairly complete functionalities to the shaders they're used in. **Libraries** on the other hand only contain simple functions for use within more complex code. Their purpose is to make writing new code faster and easier.
+
+**Note:** Most files in this repository use namespaces to organize their functions and variables. When using these files, ensure you access the functions and variables through their respective namespaces (e.g., `Color::luma()`, `Debug::applyDebugOptions()`). 
 
 ### Libraries
 
 #### `libraries/color.fxh`
 
 This file contains functions related to color. Currently, it only includes a generic luma (brightness) calculation function. Include this file in your shader to access the `Color` namespace.
-
-**Example:**
-```hlsl
-#include "color.fxh"
-float brightness = Color::luma(float3(1.0, 0.5, 0.2));
-```
 
 #### `libraries/debug.fxh`
 
@@ -37,15 +35,11 @@ float4 debugOutput = Debug::applyDebugOptions(color, opts);
 
 This file provides commonly used mathematical functions, including max, min, sum, and average calculations for vectors of various sizes. Include this file to access the `Functions` namespace, which contains a variety of mathematical utilities.
 
-**Example:**
-```hlsl
-#include "functions.fxh"
-float maxVal = Functions::max(float3(0.1, 0.5, 0.9));
-```
-
 #### `libraries/macros.fxh`
 
 This file provides macros for generating function overloads and other repetitive code patterns. Include this file to use macros for generating function overloads, reducing boilerplate code.
+
+This library is mostly just used in other libraries. If you want to use this repo for yourself, you probably won't need this file.
 
 **Example:**
 ```hlsl
@@ -55,15 +49,11 @@ GEN_OVERLOADS_UP_TO_16_PARAMS(float, max)
 
 ### Modules
 
+Functions in modules cannot be hooked up to passes directly. Instead you'll have to write a wrapepr function which invokes the functions you need and provides them with the data they need. Make sure to read any instructions inside the file carefully, and to define any of the preprocessor variables it asks for. Individual functions typically have a comment explaining what they're for and what kind of inputs they need.
+
 #### `modules/AnomalousPixelBlending.fxh`
 
 This file provides functions for detecting and blending anomalous pixels, useful for anti-aliasing and edge detection. Include this file to access the `AnomalousPixelBlending` namespace, which contains functions for calculating blending strengths and local averages.
-
-**Example:**
-```hlsl
-#include "AnomalousPixelBlending.fxh"
-float strength = AnomalousPixelBlending::calcBlendingStrength(deltas, threshold, marginFactor);
-```
 
 ### Third-Party Files
 
@@ -71,95 +61,43 @@ The `vendor` directory contains third-party files that are freely usable under p
 
 #### `vendor/SMAA.fxh`
 
-**Authorship and License:**
 This file contains the Subpixel Morphological Anti-Aliasing (SMAA) algorithm, originally developed by Jorge Jimenez, Jose I. Echevarria, Belen Masia, Fernando Navarro, and Diego Gutierrez. SMAA is licensed under the MIT License.
 
-**Description:**
-SMAA is a high-quality anti-aliasing technique that provides excellent results with minimal performance impact.
-
-**Usage:** Include this file in your shader to access the SMAA algorithm. Follow the instructions in the file to set up the required passes and textures.
-
-**Example:**
-```hlsl
-#include "SMAA.fxh"
-```
+Include this file in your shader to access the SMAA algorithm. Follow the instructions in the file to set up the required passes and textures.
 
 #### `vendor/modules/BeanSmoothing.fxh`
 
-**Authorship and License:**
-This file contains the BeanSmoothing algorithm, which is a modified version of FXAA 3.11 and includes components from TSMAA (Temporal Subpixel Morphological Anti-Aliasing). It was developed by Lordbean and modified by RdenBlaauwen. BeanSmoothing is licensed under the MIT License.
+Smoothes anti-aliased jaggies further. Meant to improve the results of AA algorithms.
 
-**Description:**
-BeanSmoothing provides a smoothing effect for post-processing.
-
-**Usage:** Include this file in your shader to access the `BeanSmoothing` namespace, which contains functions for applying the smoothing effect.
-
-**Example:**
-```hlsl
-#include "BeanSmoothing.fxh"
-float3 smoothedColor = BeanSmoothing::smooth(texcoord, offset, colorTex, blendSampler, threshold, maxIterations);
-```
+This algorithm is a heavily modified version of FXAA 3.11 by Timothy Lottes (COPYRIGHT (C) 2010, 2011 NVIDIA CORPORATION. ALL RIGHTS RESERVED.) and includes components from an experimental version of Lordbean's TSMAA (Temporal Subpixel Morphological Anti-Aliasing). It was developed by Lordbean and modified by RdenBlaauwen. BeanSmoothing is licensed under the MIT License.
 
 #### `vendor/modules/CAS.fxh`
 
-**Authorship and License:**
-This file contains the Contrast Adaptive Sharpening (CAS) algorithm, originally developed by AMD as part of the FidelityFX suite. It has been modified by RdenBlaauwen to work with the ReShade graphics language. CAS is licensed under the MIT License.
+A custom implementation of the sharpening pass contained in AMD's FideliltyFX Contrast Adaptive Sharpening (CAS). This implemention attempts to follow the original implementation and it's options closely, except where changes are necessary to make the code more flexible.
 
-**Description:**
-CAS provides a sharpening effect that adapts to the contrast of the image.
+The sharpening pass in this file is originally developed by AMD as part of the FidelityFX suite. CAS is licensed under the MIT License.
 
-**Usage:** Include this file in your shader to access the `CAS` namespace, which contains functions for applying the sharpening effect.
+**Usage:** Typically you want to call `CasSetup()` first to get the sharpness value, then call `CasFilter()`. If you already have a 9 tap pattern of samples in the context you're using this in, you can just call `CasCalculations()` and pass the color values to skip having to sample again.
 
 **Example:**
 ```hlsl
 #include "CAS.fxh"
 float const1;
-CAS::CasSetup(const1, sharpness);
+CAS::CasSetup(const1, mySharpnessParam);
 float3 processedColor;
 CAS::CasFilter(texcoord, const1, colorLinearSampler, processedColor);
 ```
 
 ## Credits
 
-This repository includes code and algorithms developed by various contributors. Special thanks to:
+Runs on Reshade by Crosire.
 
-- **RdenBlaauwen:** Maintainer of this repository and primary author of the included libraries and modules.
-
-### Third-Party Contributors
-
-The `vendor` directory contains third-party files that are freely usable under public space licenses. We extend our gratitude to the original authors:
+The `vendor` directory contains third-party files that are freely usable under public space licenses. Special thanks to:
 
 - **Jorge Jimenez, Jose I. Echevarria, Belen Masia, Fernando Navarro, and Diego Gutierrez:** Original developers of the SMAA algorithm.
 
-- **Lordbean:** Developer of the BeanSmoothing algorithm, which includes components from FXAA and TSMAA.
+- **Lordbean:** Developer of the Smoothing function contained in the so-called "BeanSmoothing" file.
+
+- **Timothy Lottes & NVIDIA:**  Developer and owner of FXAA, which the Smoothing function is based on.
 
 - **AMD:** Original developers of the Contrast Adaptive Sharpening (CAS) algorithm as part of the FidelityFX suite.
-
-Thank you for your contributions to the open-source community!
-
-## Installation
-
-To use this library in your ReShade project:
-
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/RdenBlaauwen/reshade-shared.git
-   ```
-
-2. **Include the Files:**
-   Copy the required files from the `libraries` and `modules` directories into your project's shader directory.
-
-3. **Use the Functions:**
-   Include the necessary files in your shader and use the provided functions and namespaces.
-
-## License
-
-This repository is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
-
-## Contributing
-
-Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
-
-## Support
-
-For questions or issues, please open an issue on the GitHub repository.

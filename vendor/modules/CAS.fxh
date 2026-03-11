@@ -44,6 +44,9 @@ namespace CAS {
     return tex2Doffset(colorLinearSampler, texcoord, offset).rgb;
   }
 
+  // Function for precalculating any constants needed for the filter. 
+  // Currently only calculates the sharpness value.
+  // Call this function before calling the wrapper or CasCalculations().
   void CasSetup(
       // out uint const1,
       out float const1,
@@ -54,6 +57,9 @@ namespace CAS {
     const1 = -rcp(8f - 3f * sharpness);
   }
 
+  // The calculations of the CAS function, separated from the tex sampling. 
+  // If you already have a 9 tap pattern of samples in the context you're using this in, 
+  // you can just call `CasCalculations()` and pass the color values to skip having to sample again.
   float3 CasCalculations(
     float3 a, float3 b, float3 c,
     float3 d, float3 e, float3 f,
@@ -104,6 +110,7 @@ namespace CAS {
     return saturate(((b + d + f + h) * w + e) * rcpWeight);
   }
 
+  // This is the function you usually want to call.
   void CasWrapper(
       float2 texcoord,
       float const1,
